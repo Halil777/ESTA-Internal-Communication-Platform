@@ -1,0 +1,104 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+*.keystore
+
+# Node / NestJS / Vite
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+coverage/
+.nyc_output/
+.npm/
+.pnpm-store/
+
+# Android / Gradle
+.gradle/
+**/.gradle/
+.kotlin/
+**/.kotlin/
+build/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+**/local.properties
+*.apk
+*.aab
+android/app/google-services.json
+
+# Logs and runtime files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+pids/
+*.pid
+*.seed
+*.pid.lock
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Local PBX/runtime data
+/recordings/
+/backups/
+/uploads/
+/exports/
+runtime-recordings/
+recording-storage/
+*.wav
+*.mp3
+*.opus
+
+# Temporary files
+.tmp/
+.temp/
+tmp/
+temp/
+tmp_*/
+.tmp_*/
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE/editor files
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.settings/
+
+# Local assistant/tooling state
+.agents/
+.claude/
+.codex/
+.git-backup-*/
+**/.git-backup-*/
+
+# Docker local overrides
+docker-compose.override.yml

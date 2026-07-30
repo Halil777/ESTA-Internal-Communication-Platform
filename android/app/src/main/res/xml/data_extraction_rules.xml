@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="esta_session.xml" />
+        <exclude domain="database" path="esta_connect.db" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="esta_session.xml" />
+    </device-transfer>
+</data-extraction-rules>

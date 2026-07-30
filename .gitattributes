@@ -1,0 +1,40 @@
+* text=auto
+
+# Keep Unix scripts executable-friendly on checkout.
+*.sh text eol=lf
+gradlew text eol=lf
+**/gradlew text eol=lf
+
+# Keep Windows scripts native.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Source/config files should stay stable across platforms.
+*.kt text eol=lf
+*.kts text eol=lf
+*.java text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.xml text eol=lf
+*.md text eol=lf
+
+# Binary artifacts.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.svg text eol=lf
+*.jar binary
+*.apk binary
+*.aab binary
+*.so binary
+*.dll binary
+*.exe binary

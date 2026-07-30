@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Esta Connect</string>
+    <string name="notification_channel_call_id">esta_call_channel</string>
+    <string name="notification_channel_call_name">Incoming Calls</string>
+    <string name="notification_channel_service_id">esta_service_channel</string>
+    <string name="notification_channel_service_name">Esta Connect Service</string>
+    <string name="incoming_call">Incoming Call</string>
+    <string name="call_service_running">Esta Connect is running</string>
+</resources>

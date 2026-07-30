@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Headset icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,20 C38.5,20 26,32.5 26,48 L26,60 C26,62.2 27.8,64 30,64 L34,64 C36.2,64 38,62.2 38,60 L38,50 C38,47.8 36.2,46 34,46 L30,46 L30,48 C30,34.7 40.7,24 54,24 C67.3,24 78,34.7 78,48 L78,46 L74,46 C71.8,46 70,47.8 70,50 L70,60 C70,62.2 71.8,64 74,64 L78,64 C80.2,64 82,62.2 82,60 L82,48 C82,32.5 69.5,20 54,20 Z" />
+</vector>
