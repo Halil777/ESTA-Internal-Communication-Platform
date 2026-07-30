@@ -70,7 +70,7 @@ services:
       DB_NAME: esta_connect
       DB_USER: esta_user
       DB_PASS: esta_strong_password
-      DB_SYNCHRONIZE: "true"
+      DB_SYNCHRONIZE: "false"
       JWT_SECRET: ${JWT_SECRET:-EstaConnect_JWT_Secret_Key_2024_VeryLong_ChangeInProd}
       JWT_EXPIRES_IN: 15m
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-EstaConnect_Refresh_Secret_Key_2024_VeryLong_ChangeInProd}

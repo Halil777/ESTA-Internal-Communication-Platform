@@ -20,18 +20,6 @@ import { Device } from '../devices/entities/device.entity';
 import { Call } from '../calls/entities/call.entity';
 import { AuditLog } from '../audit/audit-log.entity';
 import { Recording } from '../recordings/entities/recording.entity';
-import {
-  PjsipAor,
-  PjsipAuth,
-  PjsipContact,
-  PjsipDomainAlias,
-  PjsipEndpoint,
-  PjsipEndpointIdIp,
-  PjsipGlobal,
-  PjsipRegistration,
-  PjsipSubscriptionPersistence,
-  PjsipTransport,
-} from '../asterisk/realtime/entities/pjsip-realtime.entity';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -50,16 +38,6 @@ const AppDataSource = new DataSource({
     Call,
     AuditLog,
     Recording,
-    PjsipEndpoint,
-    PjsipAuth,
-    PjsipAor,
-    PjsipContact,
-    PjsipEndpointIdIp,
-    PjsipTransport,
-    PjsipRegistration,
-    PjsipDomainAlias,
-    PjsipGlobal,
-    PjsipSubscriptionPersistence,
   ],
   synchronize: true,
   logging: false,

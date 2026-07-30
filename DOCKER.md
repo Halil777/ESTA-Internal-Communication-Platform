@@ -85,6 +85,25 @@ pjsip show contacts
 dialplan show internal
 ```
 
+## Existing Server Schema Upgrade
+
+If an existing server logs errors such as `column "path" of relation
+"ps_contacts" does not exist`, back up the database first and then apply the
+Asterisk 20 realtime migration:
+
+```bash
+docker exec esta_postgres pg_dump -U esta_user -d esta_connect > esta_connect_before_asterisk_schema_fix.sql
+docker exec -i esta_postgres psql -U esta_user -d esta_connect < docker/postgres/migrations/20260730-asterisk20-pjsip-realtime.sql
+docker restart esta_asterisk
+```
+
+Then restart the mobile clients or log in again and verify:
+
+```bash
+docker exec esta_asterisk asterisk -rx "pjsip show contacts"
+docker exec esta_asterisk asterisk -rx "pjsip show endpoints"
+```
+
 Stop without deleting data:
 
 ```powershell

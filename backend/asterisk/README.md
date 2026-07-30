@@ -10,6 +10,10 @@ For the Docker stack, prefer the root `docker-compose.yml`. It builds an
 Asterisk container, creates the PJSIP realtime tables in PostgreSQL on first
 database init, and also keeps `pjsip.endpoints.conf` for fallback provisioning.
 
+Do not let TypeORM synchronize the `ps_*` realtime tables in production. Keep
+`DB_SYNCHRONIZE=false` and apply SQL migrations from `docker/postgres/migrations`
+for existing PostgreSQL volumes.
+
 ## Required Ports
 
 - AMI TCP: `5038` from the backend host only

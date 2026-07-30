@@ -33,33 +33,30 @@ import { RecordingsModule } from './recordings/recordings.module';
         const nodeEnv = config.get<string>('NODE_ENV', 'development');
         const synchronize = config.get<string>('DB_SYNCHRONIZE');
 
-          return {
-            type: 'postgres',
-            host: config.get(
-              'DATABASE_HOST',
-              config.get('DB_HOST', 'localhost'),
-            ),
-            port: config.get<number>(
-              'DATABASE_PORT',
-              config.get<number>('DB_PORT', 5432),
-            ),
-            database: config.get(
-              'DATABASE_NAME',
-              config.get('DB_NAME', 'esta_connect'),
-            ),
-            username: config.get(
-              'DATABASE_USER',
-              config.get('DB_USER', 'postgres'),
-            ),
-            password: config.get(
-              'DATABASE_PASSWORD',
-              config.get('DB_PASS', 'QwertyWeb123321'),
-            ),
+        return {
+          type: 'postgres',
+          host: config.get(
+            'DATABASE_HOST',
+            config.get('DB_HOST', 'localhost'),
+          ),
+          port: config.get<number>(
+            'DATABASE_PORT',
+            config.get<number>('DB_PORT', 5432),
+          ),
+          database: config.get(
+            'DATABASE_NAME',
+            config.get('DB_NAME', 'esta_connect'),
+          ),
+          username: config.get(
+            'DATABASE_USER',
+            config.get('DB_USER', 'postgres'),
+          ),
+          password: config.get(
+            'DATABASE_PASSWORD',
+            config.get('DB_PASS', 'QwertyWeb123321'),
+          ),
           entities: [__dirname + '/**/*.entity{.ts,.js}'],
-          synchronize:
-            synchronize === undefined
-              ? nodeEnv !== 'production' && nodeEnv !== 'test'
-              : synchronize === 'true',
+          synchronize: synchronize === 'true',
           logging: nodeEnv === 'development',
           ssl: false,
         };

@@ -60,6 +60,7 @@ recording-storage/
 *.wav
 *.mp3
 *.opus
+esta_connect_before_asterisk_schema_fix*.sql
 
 # Temporary files
 .tmp/

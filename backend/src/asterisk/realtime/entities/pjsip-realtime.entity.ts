@@ -98,6 +98,9 @@ export class PjsipAor {
   @Column({ nullable: true, type: 'text' })
   contact: string;
 
+  @Column({ nullable: true, length: 80 })
+  mailboxes: string;
+
   @Column({ name: 'default_expiration', nullable: true })
   defaultExpiration: number;
 
@@ -113,6 +116,9 @@ export class PjsipAor {
   @Column({ name: 'remove_existing', nullable: true, length: 10 })
   removeExisting: string;
 
+  @Column({ name: 'outbound_proxy', nullable: true, length: 255 })
+  outboundProxy: string;
+
   @Column({ name: 'qualify_frequency', nullable: true })
   qualifyFrequency: number;
 
@@ -124,6 +130,15 @@ export class PjsipAor {
 
   @Column({ name: 'support_path', nullable: true, length: 10 })
   supportPath: string;
+
+  @Column({ name: 'voicemail_extension', nullable: true, length: 40 })
+  voicemailExtension: string;
+
+  @Column({ name: 'remove_unavailable', nullable: true, length: 10 })
+  removeUnavailable: string;
+
+  @Column({ name: 'qualify_2xx_only', nullable: true, length: 10 })
+  qualify2xxOnly: string;
 }
 
 @Entity('ps_contacts')
@@ -135,7 +150,7 @@ export class PjsipContact {
   @Column({ nullable: true, length: 80 })
   endpoint: string;
 
-  @Column({ nullable: true, type: 'text' })
+  @Column({ nullable: true, length: 511 })
   uri: string;
 
   @Column({ name: 'expiration_time', nullable: true, type: 'bigint' })
@@ -147,7 +162,13 @@ export class PjsipContact {
   @Column({ name: 'qualify_timeout', nullable: true, type: 'real' })
   qualifyTimeout: number;
 
-  @Column({ name: 'user_agent', nullable: true, type: 'text' })
+  @Column({ name: 'outbound_proxy', nullable: true, length: 255 })
+  outboundProxy: string;
+
+  @Column({ nullable: true, type: 'text' })
+  path: string;
+
+  @Column({ name: 'user_agent', nullable: true, length: 255 })
   userAgent: string;
 
   @Column({ name: 'via_addr', nullable: true, length: 45 })
@@ -159,8 +180,23 @@ export class PjsipContact {
   @Column({ name: 'call_id', nullable: true, type: 'text' })
   callId: string;
 
-  @Column({ name: 'reg_server', nullable: true, length: 80 })
+  @Column({ name: 'reg_server', nullable: true, length: 255 })
   regServer: string;
+
+  @Column({ name: 'authenticate_qualify', nullable: true, length: 10 })
+  authenticateQualify: string;
+
+  @Column({ name: 'prune_on_boot', nullable: true, length: 10 })
+  pruneOnBoot: string;
+
+  @Column({ name: 'qualify_2xx_only', nullable: true, length: 10 })
+  qualify2xxOnly: string;
+
+  @Column({ nullable: true, length: 40 })
+  status: string;
+
+  @Column({ nullable: true })
+  rtt: number;
 }
 
 @Entity('ps_endpoint_id_ips')
