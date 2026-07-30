@@ -29,8 +29,8 @@ services:
     environment:
       ASTERISK_PUBLIC_IP: ${ASTERISK_PUBLIC_IP:-10.10.20.231}
       ASTERISK_LOCAL_NET: ${ASTERISK_LOCAL_NET:-10.10.20.0/24}
-      ASTERISK_RTP_START: ${ASTERISK_RTP_START:-10000}
-      ASTERISK_RTP_END: ${ASTERISK_RTP_END:-20000}
+      ASTERISK_RTP_START: "${RTP_START_PORT:-10000}"
+      ASTERISK_RTP_END: "${RTP_END_PORT:-10100}"
       ASTERISK_AMI_USER: ${ASTERISK_AMI_USER:-esta_ami_user}
       ASTERISK_AMI_SECRET: ${ASTERISK_AMI_SECRET:-esta_ami_password}
       ASTERISK_ARI_USER: ${ASTERISK_ARI_USER:-esta_ari_user}
@@ -43,7 +43,8 @@ services:
       ASTERISK_ODBC_PASSWORD: esta_strong_password
     ports:
       - "5060:5060/udp"
-      - "10000-20000:10000-20000/udp"
+      - "5060:5060/tcp"
+      - "${RTP_START_PORT:-10000}-${RTP_END_PORT:-10100}:${RTP_START_PORT:-10000}-${RTP_END_PORT:-10100}/udp"
       - "127.0.0.1:5038:5038/tcp"
       - "127.0.0.1:8088:8088/tcp"
     volumes:
@@ -93,8 +94,8 @@ services:
       ASTERISK_PJSIP_TRANSPORT_SECTION: transport-udp
       ASTERISK_PJSIP_CONFIG_FILE: pjsip.endpoints.conf
       ASTERISK_PROVISIONING_MODE: both
-      RTP_START_PORT: 10000
-      RTP_END_PORT: 20000
+      RTP_START_PORT: "${RTP_START_PORT:-10000}"
+      RTP_END_PORT: "${RTP_END_PORT:-10100}"
       RECORDINGS_PATH: /var/lib/esta-pbx/recordings
     ports:
       - "3001:3001"

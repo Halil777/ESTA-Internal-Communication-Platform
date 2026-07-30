@@ -18,7 +18,7 @@ for existing PostgreSQL volumes.
 
 - AMI TCP: `5038` from the backend host only
 - SIP UDP: `5060` from phones/admin LAN
-- RTP UDP: usually `10000-20000` between phones and Asterisk
+- RTP UDP: usually `10000-10100` between phones and Asterisk
 
 ## Files
 
@@ -50,6 +50,8 @@ ASTERISK_SIP_TRANSPORT=UDP
 ASTERISK_PJSIP_TRANSPORT_SECTION=transport-udp
 ASTERISK_PJSIP_CONFIG_FILE=pjsip.conf
 ASTERISK_PROVISIONING_MODE=both
+RTP_START_PORT=10000
+RTP_END_PORT=10100
 ```
 
 `ASTERISK_HOST` is where the backend reaches AMI. `ASTERISK_SIP_DOMAIN` is the

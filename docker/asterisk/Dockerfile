@@ -13,7 +13,7 @@ RUN chmod +x /usr/local/bin/esta-asterisk-entrypoint \
   && mkdir -p /etc/asterisk /var/run/asterisk /var/log/asterisk /var/spool/asterisk \
   && chown -R asterisk:asterisk /etc/asterisk /var/run/asterisk /var/log/asterisk /var/spool/asterisk
 
-EXPOSE 5038/tcp 5060/udp 8088/tcp 10000-20000/udp
+EXPOSE 5038/tcp 5060/tcp 5060/udp 8088/tcp 10000-10100/udp
 
 ENTRYPOINT ["/usr/local/bin/esta-asterisk-entrypoint"]
 CMD ["asterisk", "-f", "-U", "asterisk", "-G", "asterisk", "-vvv"]

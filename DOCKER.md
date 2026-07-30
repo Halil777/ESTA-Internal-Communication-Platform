@@ -123,7 +123,7 @@ Windows Firewall must allow:
 - Backend TCP `3001`
 - Admin TCP `5173`
 - SIP UDP `5060`
-- RTP UDP `10000-20000`
+- RTP UDP `10000-10100`
 
 AMI TCP `5038` is bound only to `127.0.0.1` for local debugging; backend reaches
 AMI through the internal Docker network using `asterisk:5038`.

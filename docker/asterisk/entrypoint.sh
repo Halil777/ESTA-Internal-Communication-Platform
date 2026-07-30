@@ -4,7 +4,7 @@ set -eu
 ASTERISK_PUBLIC_IP="${ASTERISK_PUBLIC_IP:-10.10.20.231}"
 ASTERISK_LOCAL_NET="${ASTERISK_LOCAL_NET:-10.10.20.0/24}"
 ASTERISK_RTP_START="${ASTERISK_RTP_START:-10000}"
-ASTERISK_RTP_END="${ASTERISK_RTP_END:-20000}"
+ASTERISK_RTP_END="${ASTERISK_RTP_END:-10100}"
 ASTERISK_AMI_USER="${ASTERISK_AMI_USER:-esta_ami_user}"
 ASTERISK_AMI_SECRET="${ASTERISK_AMI_SECRET:-esta_ami_password}"
 ASTERISK_ARI_USER="${ASTERISK_ARI_USER:-esta_ari_user}"
@@ -16,6 +16,35 @@ ASTERISK_ODBC_DATABASE="${ASTERISK_ODBC_DATABASE:-esta_connect}"
 ASTERISK_ODBC_USER="${ASTERISK_ODBC_USER:-esta_user}"
 ASTERISK_ODBC_PASSWORD="${ASTERISK_ODBC_PASSWORD:-esta_strong_password}"
 TEMPLATE_DIR="/usr/local/share/esta-asterisk/templates"
+
+is_uint() {
+  case "$1" in
+    ''|*[!0-9]*)
+      return 1
+      ;;
+    *)
+      return 0
+      ;;
+  esac
+}
+
+if ! is_uint "${ASTERISK_RTP_START}" || ! is_uint "${ASTERISK_RTP_END}"; then
+  echo "ERROR: RTP ports must be numeric"
+  exit 1
+fi
+
+RTP_PORT_COUNT=$((ASTERISK_RTP_END - ASTERISK_RTP_START + 1))
+
+if [ "${ASTERISK_RTP_END}" -lt "${ASTERISK_RTP_START}" ]; then
+  echo "ERROR: RTP end port must be greater than start port"
+  exit 1
+fi
+
+if [ "${RTP_PORT_COUNT}" -gt 1000 ]; then
+  echo "ERROR: RTP range is too large: ${ASTERISK_RTP_START}-${ASTERISK_RTP_END}"
+  echo "Maximum allowed range is 1000 ports."
+  exit 1
+fi
 
 render() {
   src="$1"
