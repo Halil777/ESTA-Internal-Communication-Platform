@@ -2,16 +2,13 @@ package com.esta.connect
 
 import android.Manifest
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.esta.connect.core.service.SipRegistrationService
+import android.os.Build
+import com.esta.connect.core.service.SipServiceStarter
 import com.esta.connect.presentation.navigation.EstaNavGraph
 import com.esta.connect.presentation.theme.EstaConnectTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,12 +58,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun startSipService() {
-        val intent = Intent(this, SipRegistrationService::class.java)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(intent)
-        } else {
-            startService(intent)
-        }
+        SipServiceStarter.start(this)
     }
 
     companion object {

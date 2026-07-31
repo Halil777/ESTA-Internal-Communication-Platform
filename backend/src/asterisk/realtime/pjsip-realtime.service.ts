@@ -78,7 +78,7 @@ export class PjsipRealtimeService {
         rewriteContact: 'yes',
         forceRport: 'yes',
         rtpSymmetric: 'yes',
-        iceSupport: 'yes',
+        iceSupport: 'no',
         dtmfMode: 'rfc4733',
         callerid: options.displayName
           ? `${options.displayName} <${extension}>`
@@ -149,7 +149,8 @@ export class PjsipRealtimeService {
         bind: '0.0.0.0:5060',
         externalMediaAddress: this.config.get<string>('ASTERISK_SIP_DOMAIN', '10.10.20.231'),
         externalSignalingAddress: this.config.get<string>('ASTERISK_SIP_DOMAIN', '10.10.20.231'),
-        localNet: this.config.get<string>('ASTERISK_LOCAL_NET', '10.10.20.0/24'),
+        externalSignalingPort: this.getNumberConfig('ASTERISK_SIP_PORT', 5060),
+        localNet: this.config.get<string>('ASTERISK_PJSIP_LOCAL_NET', '172.16.0.0/12'),
         method: 'unspecified',
         verifyClient: 'no',
         verifyServer: 'no',

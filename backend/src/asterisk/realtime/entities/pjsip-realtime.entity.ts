@@ -234,6 +234,9 @@ export class PjsipTransport {
   @Column({ name: 'external_signaling_address', nullable: true, length: 80 })
   externalSignalingAddress: string;
 
+  @Column({ name: 'external_signaling_port', nullable: true, type: 'integer' })
+  externalSignalingPort: number;
+
   @Column({ name: 'local_net', nullable: true, type: 'text' })
   localNet: string;
 

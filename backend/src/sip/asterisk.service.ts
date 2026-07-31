@@ -181,7 +181,7 @@ export class AsteriskService implements OnModuleInit, OnModuleDestroy {
             action: 'Append',
             cat: endpoint,
             variable: 'ice_support',
-            value: 'yes',
+            value: 'no',
           },
           {
             action: 'Append',

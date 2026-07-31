@@ -127,3 +127,34 @@ Windows Firewall must allow:
 
 AMI TCP `5038` is bound only to `127.0.0.1` for local debugging; backend reaches
 AMI through the internal Docker network using `asterisk:5038`.
+
+## No Audio In Docker Bridge Mode
+
+If calls ring and answer but neither side hears audio, check the SDP address in
+the Asterisk SIP logger:
+
+```bash
+docker exec -it esta_asterisk asterisk -rvvv
+pjsip set logger on
+```
+
+For LAN phones, Asterisk must advertise the PBX host IP:
+
+```text
+c=IN IP4 10.10.20.231
+Contact: <sip:10.10.20.231:5060>
+```
+
+If it advertises a Docker address such as `172.18.0.2`, recreate the Asterisk
+container after pulling the current compose/templates:
+
+```bash
+docker compose up -d --build --force-recreate asterisk
+```
+
+For existing realtime rows, this migration also normalizes endpoint NAT/media
+settings:
+
+```bash
+docker exec -i esta_postgres psql -U esta_user -d esta_connect < docker/postgres/migrations/20260731-asterisk-docker-bridge-media.sql
+```
